@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<api>
+		<resources>
+			<catalog_category>
+				<model>delightapi/category_api</model>
+				<methods>
+                    <create translate="title" module="catalog">
+                        <title>Create new category</title>
+                        <acl>catalog/category/create</acl>
+                    </create>
+                    <update translate="title" module="catalog">
+                        <title>Update category</title>
+                        <acl>catalog/category/update</acl>
+                    </update>
+				</methods>
+			</catalog_category>
+			<catalog_product>
+				<model>delightapi/product_api</model>
+				<methods>
+                    <create translate="title" module="catalog">
+                        <title>Create new product</title>
+                        <acl>catalog/product/create</acl>
+                    </create>
+                    <update translate="title" module="catalog">
+                        <title>Update product</title>
+                        <acl>catalog/product/update</acl>
+                    </update>
+				</methods>
+			</catalog_product>
+			<catalog_product_attribute_media>
+				<model>delightapi/product_media_api</model>
+				<methods>
+					<update translate="title" module="catalog">
+						<title>Update product image</title>
+                        <acl>catalog/product/media/update</acl>
+					</update>
+				</methods>
+			</catalog_product_attribute_media>
+			
+			<delightapi_product translate="title" module="delightapi">
+				<model>delightapi/product_api</model>
+				<title>Fixes for catalogProduct SOAP functions by delight software gmbh</title>
+				<methods>
+					<info translate="title" module="delightapi">
+                        <title>Retrieve product</title>
+                        <acl>catalog/product/info</acl>
+                        <method>info</method>
+                    </info>
+                    <create translate="title" module="delightapi">
+                        <title>Create new product</title>
+                        <acl>catalog/product/create</acl>
+                        <method>create</method>
+                    </create>
+                    <update translate="title" module="delightapi">
+                        <title>Update product</title>
+                        <acl>catalog/product/update</acl>
+                        <method>update</method>
+                    </update>
+				</methods>
+			</delightapi_product>
+		</resources>
+		
+		<v2>
+			<resources_function_prefix>
+				<delightapi_product>delightapiProduct</delightapi_product>
+			</resources_function_prefix>
+		</v2>
+		<acl>
+			<resources>
+				<all>
+				</all>
+			</resources>
+		</acl>
+	</api>
+</config>

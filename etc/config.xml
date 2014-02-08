@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<modules>
+		<Delight_Delightapi>
+			<version>0.2.1</version>
+		</Delight_Delightapi>
+	</modules>
+
+	<global>
+		<models>
+			<delightapi>
+				<class>Delight_Delightapi_Model</class>
+			</delightapi>
+			
+			<catalog>
+				<rewrite>
+					<category_api_v2>Delight_Delightapi_Model_Category_Api_V2</category_api_v2>
+					<product_attribute_media_api_v2>Delight_Delightapi_Model_Product_Media_Api_V2</product_attribute_media_api_v2>
+					<product_api_v2>Delight_Delightapi_Model_Product_Api_V2</product_api_v2>
+					<category_attribute_backend_image>Delight_Delightapi_Model_Category_Attribute_Backend_Image</category_attribute_backend_image>
+				</rewrite>
+			</catalog>
+			<sales>
+				<rewrite>
+					<order_api_v2>Delight_Delightapi_Model_Sales_Order_Api_V2</order_api_v2>
+					<order_api>Delight_Delightapi_Model_Sales_Order_Api</order_api>
+				</rewrite>
+			</sales>
+		</models>
+		
+		<blocks>
+			<delightapi>
+				<class>Delight_Delightapi_Block</class>
+			</delightapi>
+		</blocks>
+		
+		<helpers>
+			<delightapi>
+				<class>Delight_Delightapi_Helper</class>
+			</delightapi>
+		</helpers>
+		
+	</global>
+
+</config>

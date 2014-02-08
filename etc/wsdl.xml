@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+			
+			<!-- Add fields on orders and addresses -->
+			<complexType name="salesOrderEntity">
+                <all>
+                	<element name="customer_dob" type="xsd:string" minOccurs="0" />
+                	<element name="website_id" type="xsd:integer" minOccurs="0" />
+                	<element name="website" type="xsd:string" minOccurs="0" />
+                	
+                	<!-- Add shipping tax amount and the tax itselfs: 2011-04-13 -->
+                	<element name="shipping_tax_amount" type="xsd:string" minOccurs="0" />
+                	<element name="base_shipping_tax_amount" type="xsd:string" minOccurs="0" />
+                	<element name="tax_percent" type="xsd:string" minOccurs="0" />
+                	<element name="base_tax_percent" type="xsd:string" minOccurs="0" />
+                	<element name="tax_list" type="typens:delightapiTaxEntries" minOccurs="0" />
+				</all>
+			</complexType>
+			
+			<complexType name="salesOrderAddressEntity">
+                <all>
+					<element name="prefix" type="xsd:string" minOccurs="0" />
+					<element name="suffix" type="xsd:string" minOccurs="0" />
+					<element name="middlename" type="xsd:string" minOccurs="0" />
+					<element name="street1" type="xsd:string" minOccurs="0" />
+					<element name="street2" type="xsd:string" minOccurs="0" />
+				</all>
+			</complexType>
+			
+			<!-- Add fields on Products -->
+			<complexType name="catalogProductReturnEntity">
+				<all>
+					<element name="tier_prices" type="typens:catalogProductTierPriceEntityArray" minOccurs="0" />
+				</all>
+			</complexType>
+			<complexType name="catalogProductCreateEntity">
+				<all>
+					<element name="tier_prices" type="typens:catalogProductTierPriceEntityArray" minOccurs="0" />
+				</all>
+			</complexType>
+			
+			<!-- Special entities -->
+			<complexType name="delightapiProductReturnEntity">
+				<all>
+					<element name="product_id" type="xsd:string" minOccurs="0" />
+					<element name="sku" type="xsd:string" minOccurs="0" />
+					<element name="set" type="xsd:string" minOccurs="0" />
+					<element name="type" type="xsd:string" minOccurs="0" />
+					<element name="categories" type="typens:ArrayOfString" minOccurs="0" />
+					<element name="websites" type="typens:ArrayOfString" minOccurs="0" />
+					<element name="created_at" type="xsd:string" minOccurs="0" />
+					<element name="updated_at" type="xsd:string" minOccurs="0" />
+					<element name="type_id" type="xsd:string" minOccurs="0" />
+					<element name="name" type="xsd:string" minOccurs="0" />
+					<element name="description" type="xsd:string" minOccurs="0" />
+					<element name="short_description" type="xsd:string" minOccurs="0" />
+					<element name="weight" type="xsd:string" minOccurs="0" />
+					<element name="status" type="xsd:string" minOccurs="0" />
+					<element name="url_key" type="xsd:string" minOccurs="0" />
+					<element name="url_path" type="xsd:string" minOccurs="0" />
+					<element name="visibility" type="xsd:string" minOccurs="0" />
+					<element name="category_ids" type="typens:ArrayOfString" minOccurs="0" />
+					<element name="website_ids" type="typens:ArrayOfString" minOccurs="0" />
+					<element name="has_options" type="xsd:string" minOccurs="0" />
+					<element name="gift_message_available" type="xsd:string" minOccurs="0" />
+					<element name="price" type="xsd:string" minOccurs="0" />
+					<element name="special_price" type="xsd:string" minOccurs="0" />
+					<element name="special_from_date" type="xsd:string" minOccurs="0" />
+					<element name="special_to_date" type="xsd:string" minOccurs="0" />
+					<element name="tax_class_id" type="xsd:string" minOccurs="0" />
+					<!-- in Mage/Catalog/etc/wsdl.xml "tier_price" is defined as "type:ArrayOfString" which is invalid -->
+					<element name="tier_price" type="typens:catalogProductTierPriceEntityArray" minOccurs="0" />
+					<element name="meta_title" type="xsd:string" minOccurs="0" />
+					<element name="meta_keyword" type="xsd:string" minOccurs="0" />
+					<element name="meta_description" type="xsd:string" minOccurs="0" />
+					<element name="custom_design" type="xsd:string" minOccurs="0" />
+					<element name="custom_layout_update" type="xsd:string" minOccurs="0" />
+					<element name="options_container" type="xsd:string" minOccurs="0" />
+					<element name="additional_attributes" type="typens:associativeArray" minOccurs="0" />
+					<element name="enable_googlecheckout" type="xsd:string" minOccurs="0" />
+				</all>
+			</complexType>
+			<complexType name="delightapiProductCreateEntity">
+				<all>
+					<element name="categories" type="typens:ArrayOfString" minOccurs="0" />
+					<element name="websites" type="typens:ArrayOfString" minOccurs="0" />
+					<element name="name" type="xsd:string" minOccurs="0" />
+					<element name="description" type="xsd:string" minOccurs="0" />
+					<element name="short_description" type="xsd:string" minOccurs="0" />
+					<element name="weight" type="xsd:string" minOccurs="0" />
+					<element name="status" type="xsd:string" minOccurs="0" />
+					<element name="url_key" type="xsd:string" minOccurs="0" />
+					<element name="url_path" type="xsd:string" minOccurs="0" />
+					<element name="visibility" type="xsd:string" minOccurs="0" />
+					<element name="category_ids" type="typens:ArrayOfString" minOccurs="0" />
+					<element name="website_ids" type="typens:ArrayOfString" minOccurs="0" />
+					<element name="has_options" type="xsd:string" minOccurs="0" />
+					<element name="gift_message_available" type="xsd:string" minOccurs="0" />
+					<element name="price" type="xsd:string" minOccurs="0" />
+					<element name="special_price" type="xsd:string" minOccurs="0" />
+					<element name="special_from_date" type="xsd:string" minOccurs="0" />
+					<element name="special_to_date" type="xsd:string" minOccurs="0" />
+					<element name="tax_class_id" type="xsd:string" minOccurs="0" />
+					<!-- in Mage/Catalog/etc/wsdl.xml "tier_price" is defined as "type:ArrayOfString" which is invalid -->
+					<element name="tier_price" type="typens:catalogProductTierPriceEntityArray" minOccurs="0" />
+					<element name="meta_title" type="xsd:string" minOccurs="0" />
+					<element name="meta_keyword" type="xsd:string" minOccurs="0" />
+					<element name="meta_description" type="xsd:string" minOccurs="0" />
+					<element name="custom_design" type="xsd:string" minOccurs="0" />
+					<element name="custom_layout_update" type="xsd:string" minOccurs="0" />
+					<element name="options_container" type="xsd:string" minOccurs="0" />
+					<element name="additional_attributes" type="typens:associativeArray" minOccurs="0" />
+				</all>
+			</complexType>
+			
+			<!-- List of all Taxes -->
+			<complexType name="delightapiTaxEntry">
+                <all>
+                    <element name="code" type="xsd:string" />
+                    <element name="name" type="xsd:string" />
+                    <element name="percent" type="xsd:string" />
+                </all>
+            </complexType>
+            <complexType name="ArrayOfTaxEntries">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:delightapiTaxEntry[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="delightapiTaxGroup">
+                <all>
+                    <element name="percent" type="xsd:string" />
+                    <element name="amount" type="xsd:string" />
+                    <element name="base_amount" type="xsd:string" />
+                    <element name="base_real_amount" type="xsd:string" />
+                    <element name="tax_list" type="typens:ArrayOfTaxEntries" />
+                </all>
+            </complexType>
+            <complexType name="delightapiTaxEntries">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:delightapiTaxGroup[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+		</schema>
+	</types>
+
+    <message name="delightapiProductInfoRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="product" type="xsd:string" />
+        <part name="storeView" type="xsd:string" />
+        <part name="attributes" type="typens:catalogProductRequestAttributes" />
+        <part name="productIdentifierType" type="xsd:string" />
+    </message>
+	<message name="delightapiProductInfoResponse">
+        <part name="info" type="typens:delightapiProductReturnEntity" />
+    </message>
+    
+    <message name="delightapiProductCreateRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="type" type="xsd:string" />
+        <part name="set" type="xsd:string" />
+        <part name="sku" type="xsd:string" />
+        <part name="productData" type="typens:delightapiProductCreateEntity" />
+    </message>
+    <message name="delightapiProductCreateResponse">
+        <part name="result" type="xsd:int" />
+    </message>
+    
+    <message name="delightapiProductUpdateRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="product" type="xsd:string" />
+        <part name="productData" type="typens:delightapiProductCreateEntity" />
+        <part name="storeView" type="xsd:string" />
+        <part name="productIdentifierType" type="xsd:string" />
+    </message>
+    <message name="delightapiProductUpdateResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    
+    <!--<message name="delightapiProductGetSpecialPriceRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="product" type="xsd:string" />
+        <part name="storeView" type="xsd:string" />
+        <part name="productIdentifierType" type="xsd:string" />
+    </message>
+    <message name="delightapiProductGetSpecialPriceResponse">
+        <part name="result" type="typens:delightapiProductReturnEntity" />
+    </message>-->
+    
+    <portType name="{{var wsdl.handler}}PortType">
+    	<operation name="delightapiProductInfo">
+            <documentation>Retrieve product</documentation>
+            <input message="typens:delightapiProductInfoRequest" />
+            <output message="typens:delightapiProductInfoResponse" />
+        </operation>
+        <operation name="delightapiProductCreate">
+            <documentation>Create new product and return product id</documentation>
+            <input message="typens:delightapiProductCreateRequest" />
+            <output message="typens:delightapiProductCreateResponse" />
+        </operation>
+        <operation name="delightapiProductUpdate">
+            <documentation>Update product</documentation>
+            <input message="typens:delightapiProductUpdateRequest" />
+            <output message="typens:delightapiProductUpdateResponse" />
+        </operation>
+        <!--<operation name="delightapiProductGetSpecialPrice">
+            <documentation>Get product special price data</documentation>
+            <input message="typens:delightapiProductGetSpecialPriceRequest" />
+            <output message="typens:delightapiProductGetSpecialPriceResponse" />
+        </operation>-->
+    </portType>
+    
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+    	<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+    	<operation name="delightapiProductInfo">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="delightapiProductCreate">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="delightapiProductUpdate">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <!--<operation name="delightapiProductGetSpecialPrice">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>-->
+    </binding>
+	
+	<service name="{{var wsdl.name}}Service">
+        <port name="{{var wsdl.handler}}Port" binding="typens:{{var wsdl.handler}}Binding">
+            <soap:address location="{{var wsdl.url}}" />
+        </port>
+    </service>
+	
+</definitions>
