@@ -1,0 +1,80 @@
+Magento delightapi module
+=========================
+
+This is a simple module for Magentocommerce in which we fixed some bugs we found in the API of Magento.
+Currently this is tested on Magento 1.4 and 1.5.
+Some Bugs and Workarounds are hopefully fixed in later versions.
+
+To install, clone or download the git repo and rename the folder to 'delightapi'.
+
+
+Workarounds and Fixes
+---------------------
+
+Short descriptions of all fixes on the different versions.
+There are no additional API calls defined.
+
+
+Create Catalog Categories
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* The property 'available_sort_by' is marked as required in the code but is defined as optional on the API. It is set to the default value 'position,name,price' if it's not submitted.
+* The property 'available_sort_by' is defined as an ArrayOfString but the code requres a comma separated string.
+* The property 'default_sort_by' is marked as required in the code but is defined as optional on the API. It is set to the default value 'price' if it's not submitted.
+* The property 'is_active' is marked as required in the code but is defined as optional on the API. It is set to the default value '1' if it's not submitted.
+* The property 'include_in_menu' is marked as required in the code but is defined as optional on the API. It is set to the default value '1' if it's not submitted.
+
+
+Update Catalog Categories
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* The property 'available_sort_by' is marked as required in the code but is defined as optional on the API. It is set to the catrgories value if it's not submitted.
+* The property 'available_sort_by' is defined as an ArrayOfString but the code requres a comma separated string.
+* The property 'default_sort_by' is marked as required in the code but is defined as optional on the API. It is set to the default value 'price' if it's not submitted.
+* The property 'is_active' is marked as required in the code but is defined as optional on the API. It is set to the default value '1' if it's not submitted.
+* The property 'include_in_menu' is marked as required in the code but is defined as optional on the API. It is set to the default value '1' if it's not submitted.
+
+
+Info about Catalog Products
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* A Product has an attribute named 'tier_price' but the API defined it as 'tier_prices'.
+* Magento 1.5 and before did not handle the data in the tier_price attribute as defined in the API.
+
+
+Create Catalog Products
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* A Product has an attribute named 'tier_price' but the API defined it as 'tier_prices'.
+* Magento 1.5 and before did not handle the data in the tier_price attribute as defined in the API.
+* Magento 1.5 and before have an attribute named 'category_ids' which should be 'categories'.
+
+
+Update Catalog Products
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* A Product has an attribute named 'tier_price' but the API defined it as 'tier_prices'.
+* Magento 1.5 and before did not handle the data in the tier_price attribute as defined in the API.
+* Magento 1.5 and before have an attribute named 'category_ids' which should be 'categories'.
+
+
+Update Catalog Product Media
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* If there is no image defined on a Product update/insert through the API, an exception was thrown and not catched. This we fixed by save the media only if there is a value given.
+* Magento 1.5 and before did not update the Image on a Product update.
+
+
+List Orders
+~~~~~~~~~~~
+
+* Fix the attributes 'website' and 'website_ids' with appropriate values (name and id).
+* Adding missing attributes 'tax_percent', 'base_tax_percent' and 'tax_list'
+
+
+Info about Order
+~~~~~~~~~~~~~~~~
+
+* Fix the attributes 'website' and 'website_ids' with appropriate values (name and id).
+* Adding missing attributes 'tax_percent', 'base_tax_percent' and 'tax_list'
+
