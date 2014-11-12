@@ -38,5 +38,14 @@ class Delight_Delightapi_Helper_Data extends Mage_Core_Helper_Abstract
 	public function isPrevious16() {
 		return (version_compare(Mage::getVersion(), '1.6.0.0') <= 0);
 	}
+	public function isPrevious17() {
+		return (version_compare(Mage::getVersion(), '1.7.0.0') <= 0);
+	}
+	public function isPrevious18() {
+		return (version_compare(Mage::getVersion(), '1.8.0.0') <= 0);
+	}
+	public function isPrevious19() {
+		return (version_compare(Mage::getVersion(), '1.9.0.0') <= 0);
+	}
 
 }

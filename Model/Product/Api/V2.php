@@ -164,10 +164,10 @@ class Delight_Delightapi_Model_Product_Api_V2 extends Mage_Catalog_Model_Product
 			}
 
 			$prices[] = array(
-                'website_id' => $tierPrice->website,
-                'cust_group' => $tierPrice->customer_group_id,
-                'price_qty'  => $tierPrice->qty,
-                'price'      => $tierPrice->price
+				'website_id' => $tierPrice->website,
+				'cust_group' => $tierPrice->customer_group_id,
+				'price_qty'  => $tierPrice->qty,
+				'price'      => $tierPrice->price
 			);
 		}
 		return $prices;
