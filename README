@@ -5,7 +5,8 @@ This is a simple module for Magentocommerce in which we fixed some bugs we found
 Currently this is tested on Magento 1.4 and 1.5.
 Some Bugs and Workarounds are hopefully fixed in later versions.
 
-To install, clone or download the git repo and rename the folder to 'delightapi'.
+To install, clone or download the git repo and rename the folder to 'delightapi' and create app/etc/modules/Delight_Delightapi.xml configuration.
+If existing: Use the buildscript in the root folder to create a Magento-Module package.
 
 
 Workarounds and Fixes
